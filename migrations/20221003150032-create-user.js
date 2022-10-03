@@ -39,6 +39,9 @@ module.exports = {
       country_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
+        references: { model: "countries", key: "id" },
+        onUpdate: "CASCADE",
+        onDelete: "SET NULL",
       },
       phone: {
         type: Sequelize.STRING,
