@@ -60,6 +60,9 @@ module.exports = {
       },
       expert_id: {
         type: Sequelize.INTEGER,
+        references: { model: "user_experts", key: "id" },
+        onUpdate: "CASCADE",
+        onDelete: "SET NULL",
       },
       createdAt: {
         allowNull: false,

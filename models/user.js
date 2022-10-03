@@ -11,6 +11,10 @@ module.exports = (sequelize, DataTypes) => {
       user.belongsTo(models.country, { foreignKey: "id" });
       user.hasMany(models.review, { foreignKey: "user_id_from" });
       user.hasMany(models.review, { foreignKey: "user_id_to" });
+      user.hasOne(models.user_expert, {
+        foreignKey: "id",
+      });
+      user.hasMany(models.job, { foreignKey: "user_id" });
     }
   }
   user.init(
