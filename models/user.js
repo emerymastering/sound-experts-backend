@@ -1,7 +1,5 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+"use strict";
+const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class user extends Model {
     /**
@@ -13,24 +11,27 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  user.init({
-    first_name: DataTypes.STRING,
-    second_name: DataTypes.STRING,
-    artist_name: DataTypes.STRING,
-    email: DataTypes.STRING,
-    password: DataTypes.STRING,
-    street_address: DataTypes.STRING,
-    city: DataTypes.STRING,
-    country_id: DataTypes.INTEGER,
-    phone: DataTypes.STRING,
-    rating: DataTypes.INTEGER,
-    image_URL: DataTypes.STRING,
-    is_expert: DataTypes.BOOLEAN,
-    is_blocked: DataTypes.BOOLEAN,
-    expert_id: DataTypes.INTEGER
-  }, {
-    sequelize,
-    modelName: 'user',
-  });
+  user.init(
+    {
+      first_name: { type: DataTypes.STRING, allowNull: false },
+      second_name: { type: DataTypes.STRING, allowNull: false },
+      artist_name: DataTypes.STRING,
+      email: { type: DataTypes.STRING, unique: true, allowNull: false },
+      password: { type: DataTypes.STRING, allowNull: false },
+      street_address: { type: DataTypes.STRING, allowNull: false },
+      city: { type: DataTypes.STRING, allowNull: false },
+      country_id: { type: DataTypes.STRING, allowNull: false },
+      phone: DataTypes.STRING,
+      rating: DataTypes.INTEGER,
+      image_URL: DataTypes.STRING,
+      is_expert: DataTypes.BOOLEAN,
+      is_blocked: DataTypes.BOOLEAN,
+      expert_id: DataTypes.INTEGER,
+    },
+    {
+      sequelize,
+      modelName: "user",
+    }
+  );
   return user;
 };
