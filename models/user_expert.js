@@ -9,6 +9,10 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       user_expert.belongsTo(models.user, { foreignKey: "expert_id" });
+      user_expert.belongsToMany(models.genre, {
+        through: "user_expert_genres",
+        foreignKey: "user_expert_id",
+      });
     }
   }
   user_expert.init(
