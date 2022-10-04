@@ -13,6 +13,10 @@ module.exports = (sequelize, DataTypes) => {
         through: "user_expert_genres",
         foreignKey: "user_expert_id",
       });
+      user_expert.belongsToMany(models.specialisation, {
+        through: "user_expert_specialisations",
+        foreignKey: "user_expert_id",
+      });
     }
   }
   user_expert.init(
