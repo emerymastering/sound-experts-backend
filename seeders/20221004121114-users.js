@@ -21,7 +21,6 @@ module.exports = {
             "https://insiderpaper.com/wp-content/uploads/2022/05/apple-music-holiday-990x495.webp",
           is_expert: true,
           is_blocked: false,
-          expert_id: 1,
           createdAt: new Date(),
           updatedAt: new Date(),
         },

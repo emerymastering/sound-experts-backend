@@ -16,6 +16,9 @@ module.exports = (sequelize, DataTypes) => {
       job_id: DataTypes.INTEGER,
       user_expert_id: DataTypes.INTEGER,
       message: DataTypes.TEXT,
+      price: DataTypes.INTEGER,
+      delivery_date: DataTypes.DATEONLY,
+      accepted: DataTypes.BOOLEAN,
     },
     {
       sequelize,

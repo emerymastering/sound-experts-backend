@@ -15,6 +15,7 @@ module.exports = {
           equipment: "I use the best equipment...",
           credits: "Sony, BMG, Prodigy, etc",
           terms: "my term are...",
+          user_id: 1,
           createdAt: new Date(),
           updatedAt: new Date(),
         },

@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
       user.hasMany(models.review, { foreignKey: "user_id_from" });
       user.hasMany(models.review, { foreignKey: "user_id_to" });
       user.hasOne(models.user_expert, {
-        foreignKey: "id",
+        foreignKey: "user_id",
       });
       user.hasMany(models.job, { foreignKey: "user_id" });
     }
@@ -32,7 +32,6 @@ module.exports = (sequelize, DataTypes) => {
       image_URL: DataTypes.STRING,
       is_expert: DataTypes.BOOLEAN,
       is_blocked: DataTypes.BOOLEAN,
-      expert_id: DataTypes.INTEGER,
     },
     {
       sequelize,
