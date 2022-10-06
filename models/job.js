@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      job.belongsTo(models.user);
+      job.belongsTo(models.user, { foreignKey: "user_id" });
       job.hasOne(models.specialisation);
       job.hasOne(models.genre);
       job.hasOne(models.job_application);
@@ -16,7 +16,6 @@ module.exports = (sequelize, DataTypes) => {
   }
   job.init(
     {
-      given_id: DataTypes.INTEGER,
       user_id: DataTypes.INTEGER,
       specialisation_id: { type: DataTypes.INTEGER, allowNull: false },
       genre_id: DataTypes.INTEGER,

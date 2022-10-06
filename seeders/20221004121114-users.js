@@ -60,6 +60,24 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
+        {
+          first_name: "Lewis",
+          second_name: "Hopkin",
+          artist_name: "",
+          email: "info@stardeltamastering.com",
+          password: bcrypt.hashSync("1234", 10),
+          street_address: "unknown",
+          city: "Devon",
+          country_id: 4,
+          phone: "+44 (0) 1647 252895",
+          rating: 5,
+          image_URL:
+            "http://www.stardeltamastering.com/wp-content/themes/stardelta/images/logo.gif",
+          is_expert: true,
+          is_blocked: false,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
       ],
       {}
     );

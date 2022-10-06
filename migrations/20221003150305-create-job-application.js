@@ -20,7 +20,7 @@ module.exports = {
       },
       price: { type: Sequelize.INTEGER },
       delivery_date: { type: Sequelize.DATEONLY },
-      accepted: { type: Sequelize.BOOLEAN },
+      accepted: { type: Sequelize.INTEGER },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

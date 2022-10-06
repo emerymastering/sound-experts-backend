@@ -19,6 +19,21 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
+        {
+          profile_name: "Stardelta Mastering",
+          description: "Best London Mastering",
+          discogs_URL:
+            "https://www.discogs.com/label/444324-StarDelta-Audio-Mastering",
+          soundcloud_URL: "",
+          news: "New cables!",
+          deal: "albums get discount",
+          equipment: "I use the best analogue equipment...",
+          credits: "Sony, WarnerMusic, Tiesto, etc",
+          terms: "my terms are...",
+          user_id: 4,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
       ],
       {}
     );

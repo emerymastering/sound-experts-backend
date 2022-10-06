@@ -23,6 +23,12 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
+        {
+          name: "UK",
+          continent_name: "Europe",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
       ],
       {}
     );
