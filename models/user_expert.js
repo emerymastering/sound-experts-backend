@@ -17,6 +17,9 @@ module.exports = (sequelize, DataTypes) => {
         through: "user_expert_specialisations",
         foreignKey: "user_expert_id",
       });
+      user_expert.hasMany(models.job_application, {
+        foreignKey: "user_expert_id",
+      });
     }
   }
   user_expert.init(

@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
       job.belongsTo(models.user, { foreignKey: "user_id" });
       job.hasOne(models.specialisation);
       job.hasOne(models.genre);
-      job.hasOne(models.job_application);
+      job.hasMany(models.job_application, { foreignKey: "job_id" });
     }
   }
   job.init(

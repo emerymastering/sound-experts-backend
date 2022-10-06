@@ -11,9 +11,15 @@ module.exports = {
       },
       job_id: {
         type: Sequelize.INTEGER,
+        references: { model: "jobs", key: "id" },
+        onUpdate: "CASCADE",
+        onDelete: "SET NULL",
       },
       user_expert_id: {
         type: Sequelize.INTEGER,
+        references: { model: "user_experts", key: "id" },
+        onUpdate: "CASCADE",
+        onDelete: "SET NULL",
       },
       message: {
         type: Sequelize.TEXT,
