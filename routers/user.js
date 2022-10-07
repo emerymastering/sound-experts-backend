@@ -34,7 +34,7 @@ router.get("/experts", async (req, res, next) => {
       include: [{ model: Expert }],
     });
 
-    res.status(200).send({ message: "ok", specialisations: expertsCategories });
+    res.status(200).send(expertsCategories);
   } catch (e) {
     console.log(e);
     next(e);

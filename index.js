@@ -22,7 +22,7 @@ app.use(express.json());
 
 //routes
 app.use("/auth", authRouter);
-app.use("/user", userRouter);
+app.use("/users", userRouter);
 
 //start listening
 app.listen(PORT, () => {
