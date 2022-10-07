@@ -6,22 +6,37 @@ module.exports = {
       "specialisations",
       [
         {
-          title: "Mastering Engineer",
+          title: "Mastering Engineers",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          title: "Mixing Engineer",
+          title: "Mixing Engineers",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          title: "Singer",
+          title: "Female Singers",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          title: "Drummer",
+          title: "Male Singers",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          title: "Beatmakers",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          title: "Producers",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          title: "Session Musicians",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
