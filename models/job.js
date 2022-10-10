@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       job.belongsTo(models.user, { foreignKey: "user_id" });
       job.belongsTo(models.specialisation, { foreignKey: "specialisation_id" });
-      job.hasOne(models.genre);
+      job.belongsTo(models.genre, { foreignKey: "genre_id" });
       job.hasMany(models.job_application, { foreignKey: "job_id" });
     }
   }

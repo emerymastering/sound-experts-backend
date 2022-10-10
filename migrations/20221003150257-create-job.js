@@ -17,9 +17,15 @@ module.exports = {
       specialisation_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
+        references: { model: "specialisations", key: "id" },
+        onUpdate: "CASCADE",
+        onDelete: "SET NULL",
       },
       genre_id: {
         type: Sequelize.INTEGER,
+        references: { model: "genres", key: "id" },
+        onUpdate: "CASCADE",
+        onDelete: "SET NULL",
       },
       deadline: {
         type: Sequelize.DATEONLY,

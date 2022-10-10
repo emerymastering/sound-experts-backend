@@ -12,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
         through: "user_expert_genres",
         foreignKey: "genre_id",
       });
+      genre.hasMany(models.job, { foreignKey: "genre_id" });
     }
   }
   genre.init(
