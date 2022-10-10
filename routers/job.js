@@ -17,7 +17,7 @@ router.get("/", async (req, res, next) => {
       ],
     });
 
-    res.status(200).send({ message: "ok", jobs: jobs });
+    res.status(200).send({ jobs });
   } catch (e) {
     console.log(e);
     next(e);
