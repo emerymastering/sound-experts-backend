@@ -62,24 +62,18 @@ router.delete("/:id", auth, async (req, res, next) => {
   try {
     const { id } = req.params;
     const job = await Job.findByPk(id);
-    // console.log("job", job);
 
     if (!job) {
       return res.status(404).send("Job not found");
     }
 
-    const jobId = parseInt(job.dataValues.user_id);
+    const jobUserId = parseInt(job.dataValues.user_id);
 
-    // console.log("job id", jobId);
-
-    if (req.user.id !== jobId) {
+    if (req.user.id !== jobUserId) {
       return res.status(401).send({ message: "unauthorized access" });
     }
 
-    // console.log("query", req.query);
-
     await job.destroy();
-
     res.send({ message: "ok", id });
   } catch (error) {
     next(error);
@@ -93,6 +87,17 @@ router.get("/specialisations", async (req, res, next) => {
   try {
     const allSpecialisations = await Specialisation.findAll();
     res.status(200).send(allSpecialisations);
+  } catch (e) {
+    console.log(e);
+    next(e);
+  }
+});
+
+//Get genres
+router.get("/genres", async (req, res, next) => {
+  try {
+    const allGenres = await Genre.findAll();
+    res.status(200).send(allGenres);
   } catch (e) {
     console.log(e);
     next(e);
