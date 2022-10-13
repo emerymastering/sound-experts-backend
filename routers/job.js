@@ -88,4 +88,15 @@ router.delete("/:id", auth, async (req, res, next) => {
 
 // if user_id (from job) === user.id (from the token)
 
+// Get all specialisations
+router.get("/specialisations", async (req, res, next) => {
+  try {
+    const allSpecialisations = await Specialisation.findAll();
+    res.status(200).send(allSpecialisations);
+  } catch (e) {
+    console.log(e);
+    next(e);
+  }
+});
+
 module.exports = router;

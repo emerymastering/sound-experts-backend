@@ -5,9 +5,11 @@ const Review = require("../models").review;
 const Job = require("../models").job;
 const Application = require("../models").job_application;
 const Specialisation = require("../models").specialisation;
+const Country = require("../models").country;
 
 const router = new Router();
 
+//Get all users with job, review and expert models
 router.get("/", async (req, res, next) => {
   try {
     const users = await User.findAll({
@@ -35,6 +37,17 @@ router.get("/experts", async (req, res, next) => {
     });
 
     res.status(200).send(expertsCategories);
+  } catch (e) {
+    console.log(e);
+    next(e);
+  }
+});
+
+//Get countries
+router.get("/countries", async (req, res, next) => {
+  try {
+    const allCountries = await Country.findAll({ order: [["name", "ASC"]] });
+    res.status(200).send(allCountries);
   } catch (e) {
     console.log(e);
     next(e);
