@@ -12,6 +12,30 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
+          name: "Germany",
+          continent_name: "Europe",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          name: "France",
+          continent_name: "Europe",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          name: "Switzerland",
+          continent_name: "Europe",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          name: "Italy",
+          continent_name: "Europe",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
           name: "Lithuania",
           continent_name: "Europe",
           createdAt: new Date(),
