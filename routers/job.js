@@ -4,6 +4,8 @@ const Genre = require("../models").genre;
 const Job = require("../models").job;
 const Specialisation = require("../models").specialisation;
 const User = require("../models").user;
+const JobApplications = require("../models").job_application;
+const Experts = require("../models").user_expert;
 
 const router = new Router();
 
@@ -48,6 +50,26 @@ router.get("/user", auth, async (req, res, next) => {
   }
 });
 
+//Get jobs by job id
+router.get("/:id", auth, async (req, res, next) => {
+  try {
+    const userId = req.user.id;
+    console.log("user", userId);
+    const job = await Job.findByPk(req.params.id, {
+      include: [
+        { model: Specialisation },
+        { model: Genre },
+        { model: User, attributes: ["image_URL"] },
+      ],
+    });
+    // console.log("is job?", job);
+    res.status(200).send({ job });
+  } catch (e) {
+    console.log(e);
+    next(e);
+  }
+});
+
 //Post new job
 router.post("/", auth, async (req, res, next) => {
   try {
@@ -74,6 +96,41 @@ router.post("/", auth, async (req, res, next) => {
     const createJob = await Job.create(job);
 
     return res.status(201).send({ message: "Job created", createJob });
+  } catch (error) {
+    next(error);
+  }
+});
+
+//Post new application
+router.post("/:id/apply", auth, async (req, res, next) => {
+  try {
+    console.log("ar daeini");
+    const { message, price, delivery_date } = req.body;
+    const user_id = req.user.id;
+
+    const job_id = req.params.id;
+
+    const expertId = await Experts.findOne({ where: { user_id: user_id } });
+    console.log("ext id", expertId.dataValues);
+
+    // return res.status(201).send();
+
+    const application = {
+      user_id,
+      job_id,
+      user_expert_id: expertId.dataValues.id,
+      message,
+      price,
+      delivery_date,
+    };
+
+    const createApplication = await JobApplications.create(application);
+
+    console.log(createApplication);
+
+    return res
+      .status(201)
+      .send({ message: "Application created", createApplication });
   } catch (error) {
     next(error);
   }
