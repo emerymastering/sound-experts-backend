@@ -11,12 +11,72 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
+          title: "Afrobeat",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          title: "Cinematic",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          title: "Classical",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
           title: "Electronic",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
+          title: "Dubstep",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          title: "EDM",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          title: "Funk",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          title: "Rock",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          title: "House",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
           title: "Pop",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          title: "Reggae",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          title: "Techno",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          title: "Trap",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          title: "World",
           createdAt: new Date(),
           updatedAt: new Date(),
         },

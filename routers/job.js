@@ -85,7 +85,9 @@ router.delete("/:id", auth, async (req, res, next) => {
 // Get all specialisations
 router.get("/specialisations", async (req, res, next) => {
   try {
-    const allSpecialisations = await Specialisation.findAll();
+    const allSpecialisations = await Specialisation.findAll({
+      order: [["title", "ASC"]],
+    });
     res.status(200).send(allSpecialisations);
   } catch (e) {
     console.log(e);
@@ -96,7 +98,7 @@ router.get("/specialisations", async (req, res, next) => {
 //Get genres
 router.get("/genres", async (req, res, next) => {
   try {
-    const allGenres = await Genre.findAll();
+    const allGenres = await Genre.findAll({ order: [["title", "ASC"]] });
     res.status(200).send(allGenres);
   } catch (e) {
     console.log(e);
