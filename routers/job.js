@@ -7,6 +7,7 @@ const User = require("../models").user;
 
 const router = new Router();
 
+//Get all jobs
 router.get("/", async (req, res, next) => {
   try {
     const jobs = await Job.findAll({
@@ -15,6 +16,28 @@ router.get("/", async (req, res, next) => {
         { model: Specialisation },
         { model: Genre },
         { model: User, attributes: ["first_name", "second_name", "image_URL"] },
+      ],
+    });
+
+    res.status(200).send({ jobs });
+  } catch (e) {
+    console.log(e);
+    next(e);
+  }
+});
+
+//Get jobs by user id
+router.get("/user", auth, async (req, res, next) => {
+  try {
+    const userId = req.user.id;
+    console.log("user", userId);
+    const jobs = await Job.findAll({
+      order: [["createdAt", "ASC"]],
+      where: { user_id: userId },
+      include: [
+        { model: Specialisation },
+        { model: Genre },
+        { model: User, attributes: ["image_URL"] },
       ],
     });
 
