@@ -50,8 +50,8 @@ router.get("/user", auth, async (req, res, next) => {
   }
 });
 
-//Get jobs by job id
-router.get("/:id", auth, async (req, res, next) => {
+//Get jobs by job id for myAccount
+router.get("/by/:id", auth, async (req, res, next) => {
   try {
     const userId = req.user.id;
     console.log("user", userId);
@@ -165,6 +165,7 @@ router.delete("/:id", auth, async (req, res, next) => {
 // Get all specialisations
 router.get("/specialisations", async (req, res, next) => {
   try {
+    console.log("what the fuck?");
     const allSpecialisations = await Specialisation.findAll({
       order: [["title", "ASC"]],
     });
