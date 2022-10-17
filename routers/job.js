@@ -62,7 +62,7 @@ router.get("/by/:id", auth, async (req, res, next) => {
         { model: User, attributes: ["image_URL"] },
       ],
     });
-    // console.log("is job?", job);
+
     res.status(200).send({ job });
   } catch (e) {
     console.log(e);
@@ -113,8 +113,6 @@ router.post("/:id/apply", auth, async (req, res, next) => {
     const expertId = await Experts.findOne({ where: { user_id: user_id } });
     console.log("ext id", expertId.dataValues);
 
-    // return res.status(201).send();
-
     const application = {
       user_id,
       job_id,
@@ -138,7 +136,7 @@ router.post("/:id/apply", auth, async (req, res, next) => {
 
 // Delete a job
 
-router.delete("/:id", auth, async (req, res, next) => {
+router.delete("/by/:id", auth, async (req, res, next) => {
   try {
     const { id } = req.params;
     const job = await Job.findByPk(id);
@@ -159,8 +157,6 @@ router.delete("/:id", auth, async (req, res, next) => {
     next(error);
   }
 });
-
-// if user_id (from job) === user.id (from the token)
 
 // Get all specialisations
 router.get("/specialisations", async (req, res, next) => {
