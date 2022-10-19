@@ -17,6 +17,13 @@ router.get("/", async (req, res, next) => {
       include: [
         { model: Specialisation },
         { model: Genre },
+        {
+          model: JobApplications,
+          include: {
+            model: Experts,
+            include: [{ model: User }, { model: Specialisation }],
+          },
+        },
         { model: User, attributes: ["first_name", "second_name", "image_URL"] },
       ],
     });
@@ -39,7 +46,15 @@ router.get("/user", auth, async (req, res, next) => {
       include: [
         { model: Specialisation },
         { model: Genre },
-        { model: User, attributes: ["image_URL"] },
+        {
+          model: JobApplications,
+          include: {
+            model: Experts,
+            include: [{ model: User }, { model: Specialisation }],
+          },
+        },
+
+        { model: User, attributes: ["image_URL"], include: { model: Experts } },
       ],
     });
 
@@ -182,5 +197,29 @@ router.get("/genres", async (req, res, next) => {
     next(e);
   }
 });
+
+// get job proposals by job_id
+// router.get("/proposals/:id", auth, async (req, res, next) => {
+//   try {
+//     // const userId = req.user.id;
+//     // console.log("user", userId);
+//     const proposals = await JobApplications.findAll(
+//       { where: { job_id: req.params.id } },
+//       {
+//         include: [
+//           { model: Specialisation },
+//           { model: Genre },
+//           { model: User, attributes: ["image_URL"] },
+//           { model: Experts },
+//         ],
+//       }
+//     );
+
+//     res.status(200).send({ proposals });
+//   } catch (e) {
+//     console.log(e);
+//     next(e);
+//   }
+// });
 
 module.exports = router;
