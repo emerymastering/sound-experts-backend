@@ -1,8 +1,9 @@
-const { Router, request } = require("express");
+const { Router } = require("express");
 const auth = require("../auth/middleware");
 const Genre = require("../models").genre;
 const Job = require("../models").job;
 const Specialisation = require("../models").specialisation;
+const Proposal = require("../models").job_application;
 const User = require("../models").user;
 const JobApplications = require("../models").job_application;
 const Experts = require("../models").user_expert;
@@ -192,6 +193,29 @@ router.get("/genres", async (req, res, next) => {
   try {
     const allGenres = await Genre.findAll({ order: [["title", "ASC"]] });
     res.status(200).send(allGenres);
+  } catch (e) {
+    console.log(e);
+    next(e);
+  }
+});
+
+// update proposal as accepted
+
+router.patch("/proposal/:id", auth, async (req, res, next) => {
+  try {
+    const proposal = await Proposal.findByPk(req.params.id, {
+      include: { model: Job, attributes: ["user_id"] },
+    });
+    const userId = req.user.id;
+    if (proposal.job.user_id !== userId) {
+      return res
+        .status(403)
+        .send({ message: "You are not authorized to update this proposal" });
+    }
+
+    await proposal.update({ accepted: true }); //!proposal.accepted
+
+    return res.status(200).send({ proposal });
   } catch (e) {
     console.log(e);
     next(e);
