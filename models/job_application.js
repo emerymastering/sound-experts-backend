@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
       message: DataTypes.TEXT,
       price: DataTypes.INTEGER,
       delivery_date: DataTypes.DATEONLY,
-      accepted: DataTypes.INTEGER,
+      accepted: DataTypes.BOOLEAN,
     },
     {
       sequelize,
