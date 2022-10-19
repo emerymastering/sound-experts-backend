@@ -55,7 +55,11 @@ router.get("/user", auth, async (req, res, next) => {
           },
         },
 
-        { model: User, attributes: ["image_URL"], include: { model: Experts } },
+        {
+          model: User,
+          attributes: ["image_URL"],
+          include: { model: Experts },
+        },
       ],
     });
 
@@ -75,7 +79,7 @@ router.get("/by/:id", auth, async (req, res, next) => {
       include: [
         { model: Specialisation },
         { model: Genre },
-        { model: User, attributes: ["image_URL"] },
+        { model: User, attributes: ["image_URL", "first_name", "second_name"] },
       ],
     });
 
