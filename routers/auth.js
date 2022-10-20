@@ -4,6 +4,8 @@ const { toJWT } = require("../auth/jwt");
 const authMiddleware = require("../auth/middleware");
 const User = require("../models/").user;
 const Job = require("../models").job;
+const UserExpert = require("../models").user_expert;
+const JobApplication = require("../models").job_application;
 const { SALT_ROUNDS } = require("../config/constants");
 
 const router = new Router();
@@ -19,7 +21,19 @@ router.post("/login", async (req, res, next) => {
         .send({ message: "Please provide both email and password" });
     }
 
-    const user = await User.findOne({ where: { email }, include: Job });
+    const user = await User.findOne({
+      where: { email },
+      include: [
+        { model: Job },
+        {
+          model: UserExpert,
+          include: {
+            model: JobApplication,
+            include: { model: Job, include: { model: User } },
+          },
+        },
+      ],
+    });
 
     if (!user || !bcrypt.compareSync(password, user.password)) {
       return res.status(400).send({
@@ -76,6 +90,16 @@ router.post("/signup", async (req, res) => {
       city,
       country_id,
       phone,
+      include: [
+        { model: Job },
+        {
+          model: UserExpert,
+          include: {
+            model: JobApplication,
+            include: { model: Job, include: { model: User } },
+          },
+        },
+      ],
     });
 
     delete newUser.dataValues["password"]; // don't send back the password hash
@@ -99,7 +123,18 @@ router.post("/signup", async (req, res) => {
 // - checking if a token is (still) valid
 router.get("/me", authMiddleware, async (req, res) => {
   // don't send back the password hash
-  const user = await User.findByPk(req.user.id, { include: Job });
+  const user = await User.findByPk(req.user.id, {
+    include: [
+      { model: Job },
+      {
+        model: UserExpert,
+        include: {
+          model: JobApplication,
+          include: { model: Job, include: { model: User } },
+        },
+      },
+    ],
+  });
   delete user.dataValues["password"];
   res.status(200).send(user);
 });
