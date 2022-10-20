@@ -40,7 +40,7 @@ router.get("/", async (req, res, next) => {
 router.get("/user", auth, async (req, res, next) => {
   try {
     const userId = req.user.id;
-    console.log("user", userId);
+
     const jobs = await Job.findAll({
       order: [["createdAt", "ASC"]],
       where: { user_id: userId },
@@ -74,7 +74,6 @@ router.get("/user", auth, async (req, res, next) => {
 router.get("/by/:id", auth, async (req, res, next) => {
   try {
     const userId = req.user.id;
-    console.log("user", userId);
     const job = await Job.findByPk(req.params.id, {
       include: [
         { model: Specialisation },
@@ -124,14 +123,12 @@ router.post("/", auth, async (req, res, next) => {
 //Post new application
 router.post("/:id/apply", auth, async (req, res, next) => {
   try {
-    console.log("ar daeini");
     const { message, price, delivery_date } = req.body;
     const user_id = req.user.id;
 
     const job_id = req.params.id;
 
     const expertId = await Experts.findOne({ where: { user_id: user_id } });
-    console.log("ext id", expertId.dataValues);
 
     const application = {
       user_id,
@@ -143,8 +140,6 @@ router.post("/:id/apply", auth, async (req, res, next) => {
     };
 
     const createApplication = await JobApplications.create(application);
-
-    console.log(createApplication);
 
     return res
       .status(201)
@@ -181,7 +176,6 @@ router.delete("/by/:id", auth, async (req, res, next) => {
 // Get all specialisations
 router.get("/specialisations", async (req, res, next) => {
   try {
-    console.log("what the fuck?");
     const allSpecialisations = await Specialisation.findAll({
       order: [["title", "ASC"]],
     });
