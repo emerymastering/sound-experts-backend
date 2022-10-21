@@ -66,6 +66,11 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
+          title: "RnB",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
           title: "Techno",
           createdAt: new Date(),
           updatedAt: new Date(),

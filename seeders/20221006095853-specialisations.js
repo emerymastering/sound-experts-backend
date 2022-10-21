@@ -36,7 +36,17 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          title: "Session Musician",
+          title: "Drummer",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          title: "Bass Guitarist",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          title: "Keyboard Player",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
