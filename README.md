@@ -42,7 +42,7 @@ Default config is setup for usage with an ElephantSQL database instance, you nee
   "development": {
     "url": "YOUR_ELEPHANTSQL_URL_HERE",
     "dialect": "postgres"
-  },
+  }
 }
 ```
 
@@ -75,19 +75,22 @@ npm start
 
 ## Endpoints
 
-| Method | Path                       | Purpose                             | required parameters   | auth |
-| ------ | -------------------------- | ----------------------------------- | --------------------- | ---- |
-| POST   | '/signup'                  | Create a new user and get a token   | email, name, password | no   |
-| POST   | '/login'                   | Get a token with email & password   | email, password       | no   |
-| GET    | '/me'                      | Get information of this user        | none                  | yes  |
-
+| Method | Path      | Purpose                           | required parameters   | auth |
+| ------ | --------- | --------------------------------- | --------------------- | ---- |
+| POST   | '/signup' | Create a new user and get a token | email, name, password | no   |
+| POST   | '/login'  | Get a token with email & password | email, password       | no   |
+| GET    | '/me'     | Get information of this user      | none                  | yes  |
 
 ## Sample requests with httpie
 
 To demo making request to this server, bash commands are included that make requests using `httpie`
 
-| Method | Path                       | Command                           
-| ------ | -------------------------- | -----------------------------------
-| POST   | '/signup'                  | http :4000/sign   
-| POST   | '/login'                   | http :4000/login  
-| GET    | '/me'                      | http :4000/me      
+| Method | Path      | Command          |
+| ------ | --------- | ---------------- |
+| POST   | '/signup' | http :4000/sign  |
+| POST   | '/login'  | http :4000/login |
+| GET    | '/me'     | http :4000/me    |
+
+## link to DB diagram
+
+https://dbdiagram.io/d/63359bc37b3d2034ffe95c2c
