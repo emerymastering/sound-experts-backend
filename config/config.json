@@ -11,10 +11,7 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "url": "postgres://qdkourun:va535KCGj2PPlnDze7euRS68GfCCd00m@abul.db.elephantsql.com/qdkourun",
+    "dialect": "postgres"
   }
 }
